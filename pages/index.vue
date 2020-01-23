@@ -31,8 +31,13 @@
       }
     },
     methods: {
-      submit() {
-        this.$router.push("/mypage")
+      async submit() {
+        try{
+          await this.$store.dispatch("user/login",this.form)
+          this.$router.push("/mypage")
+        }catch (e) {
+          alert("正しいログイン情報を入力してください。")
+        }
       }
     }
   }
