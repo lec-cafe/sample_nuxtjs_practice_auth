@@ -1,72 +1,43 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        sample_nuxtjs_practice_auth
-      </h1>
-      <h2 class="subtitle">
-        My unreal Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <section>
+    <h2>Login</h2>
+    <form>
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" v-model="form.email" class="form-control" aria-label="Email" autocomplete="off">
       </div>
-    </div>
-  </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" v-model="form.password" class="form-control" aria-label="パスワード" autocomplete="off">
+        <small class="form-text text-muted">
+          <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">こちら</a>
+          <span>から取得した アクセストークンを入力ください。</span>
+        </small>
+      </div>
+      <a href="#" class="btn btn-primary" @click.prevent="submit">ログイン</a>
+    </form>
+  </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 
-export default {
-  components: {
-    Logo
+  export default {
+    data(){
+      return {
+        form: {
+          email: "",
+          password: "",
+        }
+      }
+    },
+    methods: {
+      submit() {
+        this.$router.push("/mypage")
+      }
+    }
   }
-}
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
