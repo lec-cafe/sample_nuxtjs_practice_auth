@@ -11,6 +11,12 @@
   </div>
 </template>
 
+<script>
+  export default {
+
+  }
+</script>
+
 <style>
   .container{
     max-width: 480px;
