@@ -1,11 +1,6 @@
-export const user = () => {
+export const state = () => {
   return {
-    user: {
-      token: null,
-      display_name: null,
-      avatar: null,
-      account_name: null
-    }
+    user: null
   }
 }
 
