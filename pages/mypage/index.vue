@@ -8,17 +8,16 @@
 
 <script>
   export default {
+    layout: "mypage",
     computed: {
       user() {
         return this.$store.state.user.user
       }
     },
     async mounted() {
-      const result = await this.$store.dispatch("user/relogin")
-      if (!result) {
-        alert("ログインが無効です。再ログインしてください。")
-        return this.$router.push("/")
-      }
+      console.log("ログイン前", this.user)
+      await this.$auth.user()
+      console.log("ログイン後", this.user)
     }
   }
 </script>
