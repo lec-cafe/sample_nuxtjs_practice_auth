@@ -13,14 +13,16 @@
         return this.$store.state.user.user
       }
     },
-    mounted() {
-      if (!this.user) {
-        alert("ログインしてください。")
-        this.$router.push("/")
+    async mounted() {
+      const result = await this.$store.dispatch("user/relogin")
+      if (!result) {
+        alert("ログインが無効です。再ログインしてください。")
+        return this.$router.push("/")
       }
     }
   }
 </script>
 
 <style>
+
 </style>
